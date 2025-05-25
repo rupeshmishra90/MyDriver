@@ -25,18 +25,34 @@ struct LocationSearchView: View {
                         .fill(Color(.black))
                         .frame(width: 6, height: 6)
                 }
-            }
-            VStack{
-                TextField("Current location", text: $startLocationText)
-                    .frame(height: 32)
-                    .background(Color(.systemGroupedBackground))
-                    .padding(.trailing)
-                TextField("Destination location", text: $destinationLocationText)
-                    .frame(height: 32)
-                    .background(Color(.systemGroupedBackground))
-                    .padding(.trailing)
+                VStack{
+                    TextField("Current location", text: $startLocationText)
+                        .frame(height: 32)
+                        .background(Color(.systemGroupedBackground))
+                        .padding(.trailing)
+                    TextField("Destination location", text: $destinationLocationText)
+                        .frame(height: 32)
+                        .background(Color(.systemGray4))
+                        .padding(.trailing)
+                }
+                .padding(.horizontal)
+            }//:End Hstack
+            .padding(.horizontal)
+            .padding(.top, 64)
+            
+            Divider()
+                .padding(.vertical)
+            ScrollView{
+                VStack(alignment: .leading)
+                {
+                    ForEach(0..<20, id: \.self){ _ in
+                        LocationSearchResultCell()
+                    }
+                    
+                }
             }
         }
+        .background(.white)
     }
 }
 
